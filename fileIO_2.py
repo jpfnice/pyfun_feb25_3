@@ -1,0 +1,20 @@
+
+# When the with block is left, the file is closed
+with open("data.txt") as afile:
+    print("Current position",afile.tell())
+    text=afile.read(10)
+    print(text)
+    print("Current position",afile.tell())
+    text=afile.read(10)
+    print(text)
+    print("Current position",afile.tell())
+    text=afile.read(10)
+    print(text)
+    print("Current position",afile.tell())
+    afile.seek(5)
+    print("Current position",afile.tell())
+    text=afile.read(10)
+    print(text)
+    print("Current position",afile.tell())
+    aline=afile.readline()
+    print(aline)

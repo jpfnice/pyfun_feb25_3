@@ -15,7 +15,7 @@ Name of the method to provide:
     peek(self) -> element
     __len__(self) -> int
     __repr__(self) -> str
-    __contains__(self) -> bool
+    __contains__(self, element) -> bool
     __init__(self,mSize) -> None
     
 Name of the attributes to provide:
@@ -24,18 +24,27 @@ Name of the attributes to provide:
     
 """
 class Stack:
-    def push(self,element):
-        pass
+    def push(self, element):
+        if len(self) < self.maxSize:
+            self.content.append(element)
+        else:
+            raise Exception("The maximum size is reached !!")
     def pop(self):
-        pass
+        if len(self) > 0:
+            return self.content.pop()
+        else:
+            raise Exception("The Stack is empty !!")
     def peek(self) :
-        pass
+        if len(self) > 0:
+            return self.content[-1]
+        else:
+            raise Exception("The Stack is empty !!")
     def __len__(self) :
-        pass
-    def __repr__(self) :
-        pass
-    def  __contains__(self) :
-        pass
+        return len(self.content)
+    def __repr__(self) : # (3/12) [10,8,67]
+        return f"({len(self)}/{self.maxSize}) {self.content}"
+    def  __contains__(self, element) :
+        return element in self.content
     def __init__(self, msize) :
         if isinstance(msize, int) and msize > 0:
             self.maxSize=msize
